@@ -2,13 +2,13 @@
 import { useState } from 'react'
 
 
-
 function ClickCounter({titre,message}) {
-    const [count, setCount] = useState(0)
-
-const clickCounter = () => {
-    setCount((count) => count + 1)
- }
+    const storedCount = JSON.parse(localStorage.getItem("count"));
+  const [count, setCount] = useState(storedCount ?? 0);
+    const clickCounter = () => {
+        const newCount = count + 1;
+        setCount(newCount);
+        localStorage.setItem("count", JSON.stringify(newCount))}
 
 return (
     <>
